@@ -12,7 +12,7 @@ const argv = yargs
     .argv;
 
 // Libs
-const { NetworkEnv } = require('@swoop-exchange/utils');
+const { HmyEnv } = require('@swoop-exchange/utils');
 const { getAddress } = require('@harmony-js/crypto');
 
 const { keccak256 } = require('@ethersproject/solidity');
@@ -20,7 +20,7 @@ const { bytecode } = require('../../build/contracts/UniswapV2Pair.json');
 const COMPUTED_INIT_CODE_HASH = keccak256(['bytes'], [`0x${bytecode}`]);
 
 // Vars
-const network = new NetworkEnv(argv.network)
+const network = new HmyEnv(argv.network)
 network.client.wallet.addByPrivateKey(network.accounts.deployer.privateKey)
 
 const contracts = {
